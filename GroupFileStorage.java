@@ -1,10 +1,10 @@
 package sample;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.io.BufferedReader;
 
 public class GroupFileStorage {
@@ -14,11 +14,11 @@ public class GroupFileStorage {
 		File file = new File(groupName + ".csv");
 		Student[] stud = gr.getStudent();
 
-		try (OutputStream os = new FileOutputStream(file, true)) {
+		try (Writer writer = new PrintWriter(file)) {
 			for (int i = 0; i < stud.length; i++) {
 				String studStatus = stud[i].getName() + ";" + stud[i].getLastName() + ";" + stud[i].getGender() + ";"
 						+ stud[i].getId() + System.lineSeparator();
-				os.write(studStatus.getBytes());
+				writer.write(studStatus);
 			}
 			System.out.println("You save group");
 		}
