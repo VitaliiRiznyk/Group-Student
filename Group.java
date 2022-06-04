@@ -2,6 +2,7 @@ package sample;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 
 public class Group {
 
@@ -35,7 +36,7 @@ public class Group {
 	}
 
 	public void addStuded(Student student) throws GroupOverflowException {
-		if (student != null && groupName != null) {
+		if (student != null && groupName != null && isContains(student) != true) {
 			for (int i = 0; i < students.length; i++) {
 				if (students[i] == null) {
 					student.setGroupName(groupName);// if student have another groupName this void could rename it
@@ -46,9 +47,20 @@ public class Group {
 				}
 			}
 			throw new GroupOverflowException("This group is full, try another group");
-		} else {
-			System.out.println("Set student or groupName");
+		} else if(isContains(student) == true){
+			System.out.println(student.getName() + " " + student.getLastName() + " is already added to group " + groupName);
+		}else {
+			System.out.println("Set studetn or group");
 		}
+	}
+
+	private boolean isContains(Student student) {
+		for (int i = 0; i < students.length; i++) {
+			if (student.equals(students[i])) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public Student findStudentByLastName(String lastName) throws StudentNotFoundException {
@@ -79,6 +91,27 @@ public class Group {
 	public Student[] sortStudentsNullLast() {
 		Arrays.sort(students, Comparator.nullsLast(new SortStudentsByLastName()));
 		return students;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(students);
+		result = prime * result + Objects.hash(groupName);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Group other = (Group) obj;
+		return Objects.equals(groupName, other.groupName) && Arrays.equals(students, other.students);
 	}
 
 	@Override
