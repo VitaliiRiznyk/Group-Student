@@ -1,5 +1,7 @@
 package sample;
 
+import java.util.Objects;
+
 public class Student extends Human implements CSVConverter {
 
 	private int id; // create stud id
@@ -17,16 +19,17 @@ public class Student extends Human implements CSVConverter {
 
 	@Override
 	public String toCSVString() {
-		String toCSV = Student.this.getName() + ";" + Student.this.getLastName() + ";" + Student.this.getGender() + ";" + Student.this.getId()+ ";" + Student.this.getGroupName();
+		String toCSV = Student.this.getName() + ";" + Student.this.getLastName() + ";" + Student.this.getGender() + ";"
+				+ Student.this.getId() + ";" + Student.this.getGroupName();
 		return toCSV;
 	}
 
 	@Override
 	public Student fromCSVString(String str) {
-		
-		String [] strMass = str.split(";"); // creates a massive from string
-				
-		return new Student(strMass[0],strMass[1],Gender.valueOf(strMass[2]),Integer.valueOf(strMass[3]),strMass[4]);
+
+		String[] strMass = str.split(";"); // creates a massive from string
+
+		return new Student(strMass[0], strMass[1], Gender.valueOf(strMass[2]), Integer.valueOf(strMass[3]), strMass[4]);
 	}
 
 	public int getId() {
@@ -43,6 +46,26 @@ public class Student extends Human implements CSVConverter {
 
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(groupName, id);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		return Objects.equals(groupName, other.groupName) && id == other.id;
 	}
 
 	@Override
