@@ -23,14 +23,10 @@ public class Main {
 		Student student10 = new Student("Oleksandr", "Popur", Gender.Male, 10, group2.getGroupName());
 		Student student11 = new Student("Oleg", "Tsaplin", Gender.Male, 11, group2.getGroupName());
 
-		System.out.println();
-
 		try {
 			group2.addStuded(student1);
 			group2.addStuded(student2);
 			group2.addStuded(student3);
-			group2.addStuded(student4);
-			group2.addStuded(student44);
 			group2.addStuded(student6);
 			group2.addStuded(student7);
 			group2.addStuded(student8);
@@ -41,7 +37,7 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 
-		/*System.out.println();
+		System.out.println("------------------------------");
 
 		GroupFileStorage gfs = new GroupFileStorage();
 
@@ -50,6 +46,8 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		System.out.println("------------------------------");
 
 		File fileFrom = new File("E:\\Java OOP actual\\Lesson 3 a\\Group 2.csv");// current file
 		Group group3 = new Group();
@@ -60,12 +58,11 @@ public class Main {
 		} catch (GroupOverflowException e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("------------------------------");
 		File folderFrom = new File("E:\\Java OOP actual\\Lesson 3 a");
 
 		File file = gfs.findFileByGroupName("Group 2", folderFrom);
 
 		System.out.println(file.getAbsolutePath());
-		*/
 	}
 }
