@@ -14,6 +14,7 @@ public class Main {
 		Student student2 = new Student("Oleg", "Hahun", Gender.Male, 2, group2.getGroupName());
 		Student student3 = new Student("Mukola", "Zdibai", Gender.Male, 3, group2.getGroupName());
 		Student student4 = new Student("Viktoria", "Horunsha", Gender.Female, 4, group2.getGroupName());
+		Student student44 = new Student("Viktoria", "Horunsha", Gender.Female, 4, group2.getGroupName());
 		Student student5 = new Student("Veronica", "Subirova", Gender.Female, 5, group2.getGroupName());
 		Student student6 = new Student("Vlad", "Deunhc", Gender.Male, 6, group2.getGroupName());
 		Student student7 = new Student("Oleg", "Kriliuk", Gender.Male, 7, group2.getGroupName());
@@ -29,7 +30,7 @@ public class Main {
 			group2.addStuded(student2);
 			group2.addStuded(student3);
 			group2.addStuded(student4);
-			group2.addStuded(student5);
+			group2.addStuded(student44);
 			group2.addStuded(student6);
 			group2.addStuded(student7);
 			group2.addStuded(student8);
@@ -40,7 +41,7 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 
-		System.out.println();
+		/*System.out.println();
 
 		GroupFileStorage gfs = new GroupFileStorage();
 
@@ -65,6 +66,6 @@ public class Main {
 		File file = gfs.findFileByGroupName("Group 2", folderFrom);
 
 		System.out.println(file.getAbsolutePath());
-
+		*/
 	}
 }
