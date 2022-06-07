@@ -6,18 +6,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.io.BufferedReader;
+import java.util.List;
 
 public class GroupFileStorage {
 
 	public static void saveGroupToCSV(Group gr) throws IOException {
 		String groupName = gr.getGroupName();
 		File file = new File(groupName + ".csv");
-		Student[] stud = gr.getStudent();
+		List<Student> students = gr.getStudent();
 
 		try (Writer writer = new PrintWriter(file)) {
-			for (int i = 0; i < stud.length; i++) {
-				String studStatus = stud[i].getName() + ";" + stud[i].getLastName() + ";" + stud[i].getGender() + ";"
-						+ stud[i].getId() + System.lineSeparator();
+			for (int i = 0; i < students.size(); i++) {
+				String studStatus = students.get(i).getName() + ";" + students.get(i).getLastName() + ";" + students.get(i).getGender() + ";"
+						+ students.get(i).getId() + System.lineSeparator();
 				writer.write(studStatus);
 			}
 			System.out.println("You save group");
